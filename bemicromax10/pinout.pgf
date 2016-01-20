@@ -1,0 +1,23 @@
+\usetikzlibrary{shapes.arrows,chains,positioning};
+\begin{tikzpicture}
+\definecolor{spi}{RGB}{255,153,0}
+\definecolor{pin}{RGB}{108,210,118}
+
+\tikzset{
+block/.style={rectangle,fill=pin,draw,rounded corners=5,anchor=center,text depth=.0ex},
+dot/.style={inner sep=0pt,minimum size=10pt,fill=black,circle},
+linel/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=10ex, draw},
+lines/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=2ex, draw}
+}
+
+\matrix(lm) [row sep=0.8ex,column sep=0.5ex] at (0,0) {
+ \node [block, fill=spi] {SPI\_SCK}; & \node [lines]{}; & \node [block]   {PIN2};& \node [linel]{}; & \node [dot] {} ;\\
+ \node [block, fill=spi] {SPI\_SCK}; & \node [lines]{}; & \node [block]   {PIN2};& \node [linel]{}; & \node [dot] {};\\
+};
+
+\matrix(rm)  [right=0cm of lm, row sep=0.8ex,column sep=0.5ex,]  {
+ \node [dot] {} ; & \node [linel]{}; & \node [block]   {PIN2}; & \node [lines] {} ;& \node [block, fill=spi] {SPI\_SCK};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [block]   {PIN3}; & \node [lines] {};& \node [block,fill=spi] {SPI\_MOSI};\\
+};
+
+\end{tikzpicture}
