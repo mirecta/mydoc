@@ -1,23 +1,72 @@
 \usetikzlibrary{shapes.arrows,chains,positioning};
 \begin{tikzpicture}
-\definecolor{spi}{RGB}{255,153,0}
-\definecolor{pin}{RGB}{108,210,118}
 
+\definecolor{alt1}{RGB}{255,153,0}
+\definecolor{alt2}{RGB}{30,146,213}
+\definecolor{pin}{RGB}{108,210,118}
+\definecolor{vcc}{RGB}{232,56,56}
+\definecolor{io}{RGB}{232,155,60}
+\definecolor{i2c}{RGB}{60,123,232}
+
+\tikzset{every node/.style={font=\sffamily}}
 \tikzset{
-block/.style={rectangle,fill=pin,draw,rounded corners=5,anchor=center,text depth=.0ex},
-dot/.style={inner sep=0pt,minimum size=10pt,fill=black,circle},
-linel/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=10ex, draw},
-lines/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=2ex, draw}
+        dot/.style={inner sep=0pt,minimum size=10pt,fill=black,circle},
+        linel/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=10ex, draw},
+        lines/.style = {rectangle, inner sep=0pt, minimum height=0pt, minimum width=2ex, draw},
+        gnd/.style={white,rectangle,fill=black!80,draw,rounded corners=3,anchor=center,text depth=.0ex},
+		base/.style={rectangle,fill=pin,draw,rounded corners=3,anchor=center,text depth=.0ex},
 }
 
 \matrix(lm) [row sep=0.8ex,column sep=0.5ex] at (0,0) {
- \node [block, fill=spi] {SPI\_SCK}; & \node [lines]{}; & \node [block]   {PIN2};& \node [linel]{}; & \node [dot] {} ;\\
- \node [block, fill=spi] {SPI\_SCK}; & \node [lines]{}; & \node [block]   {PIN2};& \node [linel]{}; & \node [dot] {};\\
+ && \node [base, fill=vcc] {VCC\_3V3};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=i2c] {I2C\_SDA};& \node [lines]{}; & \node [base,] {AA14};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {GPIO\_A};& \node [lines]{}; & \node [base,] {AA15};& \node [linel]{}; & \node [dot] {} ;\\
+ && \node [gnd,] {GND};& \node [linel]{}; & \node [dot] {} ;\\
+ && \node [gnd,] {GND};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_B-};& \node [lines]{}; & \node [base,] {W4};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_A-};& \node [lines]{}; & \node [base,] {W5};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_9-};& \node [lines]{}; & \node [base,] {U6};& \node [linel]{}; & \node [dot] {} ;\\
+ && \node [gnd,] {GND};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_8-};& \node [lines]{}; & \node [base,] {W7};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_7-};& \node [lines]{}; & \node [base,] {AA6};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_6-};& \node [lines]{}; & \node [base,] {V9};& \node [linel]{}; & \node [dot] {} ;\\
+ && \node [gnd,] {GND};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_5-};& \node [lines]{}; & \node [base,] {Y7};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_4-};& \node [lines]{}; & \node [base,] {Y13};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_3-};& \node [lines]{}; & \node [base,] {V13};& \node [linel]{}; & \node [dot] {} ;\\
+ && \node [gnd,] {GND};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_2-};& \node [lines]{}; & \node [base,] {V14};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_1-};& \node [lines]{}; & \node [base,] {U15};& \node [linel]{}; & \node [dot] {} ;\\
+  \node [base, fill=io] {LVDS\_TX\_0-};& \node [lines]{}; & \node [base,] {W17};& \node [linel]{}; & \node [dot] {} ;\\
 };
 
-\matrix(rm)  [right=0cm of lm, row sep=0.8ex,column sep=0.5ex,]  {
- \node [dot] {} ; & \node [linel]{}; & \node [block]   {PIN2}; & \node [lines] {} ;& \node [block, fill=spi] {SPI\_SCK};\\
- \node [dot] {} ; & \node [linel]{}; & \node [block]   {PIN3}; & \node [lines] {};& \node [block,fill=spi] {SPI\_MOSI};\\
+\matrix(rm) [right= 0cm of lm ,row sep=0.8ex,column sep=0.5ex]  {
+ \node [dot] {} ; & \node [linel]{}; & \node [base, fill=vcc] {VCC\_3V3};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {AB15};& \node [lines]{}; & \node [base, fill=i2c] {I2C\_SCL};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {Y16};& \node [lines]{}; & \node [base, fill=io] {GPIO\_B};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [gnd,] {GND};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [gnd,] {GND};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {W3};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_B+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {W6};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_A+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {U7};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_9+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [gnd,] {GND};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {W8};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_8+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {AA7};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_7+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {V10};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_6+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [gnd,] {GND};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {AA10};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_5+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {Y14};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_4+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {W14};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_3+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [gnd,] {GND};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {W15};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_2+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {V16};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_1+};\\
+ \node [dot] {} ; & \node [linel]{}; & \node [base,] {V17};& \node [lines]{}; & \node [base, fill=io] {LVDS\_TX\_0+};\\
 };
+
+
+
+
+
+
 
 \end{tikzpicture}

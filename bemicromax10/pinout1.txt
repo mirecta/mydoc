@@ -1,0 +1,21 @@
+           VCC_3V3#vcc | VCC_3V3#vcc
+      I2C_SDA#i2c AA14 | AB15 I2C_SCL#i2c
+        GPIO_A#io AA15 | Y16 GPIO_B#io
+               GND!gnd | GND!gnd
+               GND!gnd | GND!gnd
+      LVDS_TX_B-#io W4 | W3 LVDS_TX_B+#io 
+      LVDS_TX_A-#io W5 | W6 LVDS_TX_A+#io 
+      LVDS_TX_9-#io U6 | U7 LVDS_TX_9+#io 
+               GND!gnd | GND!gnd
+      LVDS_TX_8-#io W7 | W8 LVDS_TX_8+#io 
+     LVDS_TX_7-#io AA6 | AA7 LVDS_TX_7+#io 
+      LVDS_TX_6-#io V9 | V10 LVDS_TX_6+#io 
+               GND!gnd | GND!gnd
+      LVDS_TX_5-#io Y7 | AA10 LVDS_TX_5+#io 
+     LVDS_TX_4-#io Y13 | Y14 LVDS_TX_4+#io 
+     LVDS_TX_3-#io V13 | W14 LVDS_TX_3+#io 
+               GND!gnd | GND!gnd
+     LVDS_TX_2-#io V14 | W15 LVDS_TX_2+#io 
+     LVDS_TX_1-#io U15 | V16 LVDS_TX_1+#io 
+     LVDS_TX_0-#io W17 | V17 LVDS_TX_0+#io 
+

@@ -1,0 +1,3 @@
+        GPIO_01#io B2 | B1 GPIO_02#io  
+        GPIO_03#io C3 | A2 GPIO_04#io
+
